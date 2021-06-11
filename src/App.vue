@@ -1,11 +1,47 @@
 <template>
-  <div class="container">{{ message }}</div>
+  <MonacoEditor
+    class="editor-container"
+    language="yaml"
+    :value="value"
+    @editorChange="onEditorChange"
+  ></MonacoEditor>
 </template>
 <script lang="ts" setup>
-const message = 'Hello World'
+import type { editor } from 'monaco-editor'
+
+import { MonacoEditor } from './components'
+
+const value = /* YAML */ `
+containers:
+  - name: nginx
+    ports:
+      - containerPort: 80
+`.trimStart()
+
+const onEditorChange = async (editor: editor.IStandaloneCodeEditor) => {
+  console.log(editor)
+
+  const { getDocumentSymbols } = await import(
+    'monaco-editor/esm/vs/editor/contrib/documentSymbols/documentSymbols'
+  )
+
+  editor.onDidChangeCursorSelection(async () => {
+    const model = editor.getModel()
+    console.log('model:', model)
+    const symbols = await getDocumentSymbols(model!, false, {
+      isCancellationRequested: false,
+      onCancellationRequested: () => ({
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        dispose() {},
+      }),
+    })
+    console.log(symbols)
+  })
+}
 </script>
+<style src="normalize.css/normalize.css"></style>
 <style lang="scss">
-.container {
-  background-color: red;
+.editor-container {
+  height: 100vh;
 }
 </style>

@@ -1,0 +1,45 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "repository": "git@github.com:JounQin/test.git",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "vue-tsc --noEmit && vite build",
+    "dev": "vite",
+    "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer || exit 0",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "sass": "^1.34.1",
+    "vue": "^3.1.1"
+  },
+  "devDependencies": {
+    "@1stg/common-config": "^2.2.0",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.1.1",
+    "typescript": "^4.3.2",
+    "vite": "^2.3.7",
+    "vue-tsc": "^0.1.7"
+  },
+  "resolutions": {
+    "prettier": "^2.3.1"
+  },
+  "commitlint": {
+    "extends": "@1stg/commitlint-config"
+  },
+  "eslintConfig": {
+    "extends": "@1stg",
+    "overrides": [
+      {
+        "files": "*.vue",
+        "rules": {
+          "@typescript-eslint/no-unused-vars": 0,
+          "vue/experimental-script-setup-vars": 2
+        }
+      }
+    ]
+  },
+  "prettier": "@1stg/prettier-config"
+}

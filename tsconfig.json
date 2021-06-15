@@ -6,5 +6,10 @@
     "incremental": false,
     "strictFunctionTypes": true,
     "strictNullChecks": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }

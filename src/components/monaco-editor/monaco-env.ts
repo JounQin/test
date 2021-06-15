@@ -1,5 +1,5 @@
-import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
-import YamlWorker from 'monaco-yaml/lib/esm/yaml.worker?worker'
+import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker'
+import YamlWorker from 'monaco-yaml/lib/esm/yaml.worker'
 
 window.MonacoEnvironment = {
   globalAPI: true,

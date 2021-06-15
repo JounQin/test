@@ -1,22 +1,16 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { Configuration } from 'webpack'
-import { VueLoaderPlugin } from 'vue-loader'
 
 const config: Configuration = {
   mode:
     (process.env.NODE_ENV as 'development' | 'production' | undefined) ??
     'development',
-  entry: './src/index.ts',
   devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-      },
       {
         test: /\.[jt]sx?$/,
         loader: 'babel-loader',
@@ -27,11 +21,11 @@ const config: Configuration = {
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.worker\.[jt]s$/,
@@ -43,7 +37,7 @@ const config: Configuration = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin(), new HtmlWebpackPlugin()],
+  plugins: [new HtmlWebpackPlugin()],
 }
 
 export default config

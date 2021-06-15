@@ -2,8 +2,7 @@
   "extends": "@1stg/tsconfig/app",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "preserve",
-    "incremental": false,
+    "lib": ["DOM", "ESNext", "WebWorker"],
     "strictFunctionTypes": true,
     "strictNullChecks": true
   },

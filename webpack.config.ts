@@ -1,13 +1,17 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { Configuration } from 'webpack'
+import { DefinePlugin, Configuration } from 'webpack'
 import { VueLoaderPlugin } from 'vue-loader'
 
+const NODE_ENV = (process.env.NODE_ENV ?? 'development') as
+  | 'development'
+  | 'production'
+
+const isProd = NODE_ENV === 'production'
+
 const config: Configuration = {
-  mode:
-    (process.env.NODE_ENV as 'development' | 'production' | undefined) ??
-    'development',
+  mode: NODE_ENV,
   entry: './src/index.ts',
-  devtool: 'source-map',
+  devtool: isProd ? false : 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
@@ -36,6 +40,7 @@ const config: Configuration = {
       {
         test: /\.worker\.[jt]s$/,
         loader: 'worker-loader',
+        exclude: require.resolve('monaco-editor/esm/vs/editor/editor.worker'),
       },
       {
         test: /\.ttf$/,
@@ -43,7 +48,14 @@ const config: Configuration = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false,
+    }),
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin(),
+  ],
 }
 
 export default config

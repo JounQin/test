@@ -24,9 +24,11 @@ declare module 'monaco-editor/esm/vs/editor/edcore.main' {
 }
 
 declare module '*.worker' {
-  export = class _Worker extends Worker {
+  class _Worker extends Worker {
     constructor()
   }
+
+  export default _Worker
 }
 
 declare module 'monaco-editor/esm/vs/basic-languages/yaml/yaml.contribution' {}

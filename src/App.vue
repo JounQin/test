@@ -8,7 +8,6 @@
 </template>
 <script lang="ts" setup>
 import type { editor } from 'monaco-editor'
-import { getDocumentSymbols } from 'monaco-editor/esm/vs/editor/contrib/documentSymbols/documentSymbols'
 
 import { MonacoEditor } from './components'
 
@@ -20,12 +19,13 @@ containers:
 `.trimStart()
 
 const onEditorChange = async (editor: editor.IStandaloneCodeEditor) => {
-  console.log(editor)
-
+  const { getDocumentSymbols } = await import(
+    'monaco-editor/esm/vs/editor/contrib/documentSymbols/documentSymbols'
+  )
   editor.onDidChangeCursorSelection(async () => {
     const model = editor.getModel()
     console.log('model:', model)
-    const symbols = await getDocumentSymbols(model!, false, {
+    const symbols = await getDocumentSymbols(model!, true, {
       isCancellationRequested: false,
       onCancellationRequested: () => ({
         // eslint-disable-next-line @typescript-eslint/no-empty-function

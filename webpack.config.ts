@@ -28,10 +28,6 @@ const config: Configuration = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.worker\.[jt]s$/,
-        loader: 'worker-loader',
-      },
-      {
         test: /\.ttf$/,
         loader: 'url-loader',
       },

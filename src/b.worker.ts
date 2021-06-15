@@ -11,6 +11,7 @@ export function initialize() {
   console.log('b initialize')
 }
 
+// eslint-disable-next-line sonar/post-message
 self.addEventListener('message', ev => {
   console.log('b message:', ev)
   initialize()

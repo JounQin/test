@@ -10,13 +10,9 @@ export const setupMonaco = async () => {
       import('monaco-yaml/lib/esm/yaml.worker?worker'),
     ])
 
-  console.log('EditorWorker:', EditorWorker)
-  console.log('YamlWorker:', YamlWorker)
-
   window.MonacoEnvironment = {
     globalAPI: true,
     getWorker(_: string, label: string) {
-      console.log(_, label)
       if (label === 'yaml') {
         return new YamlWorker()
       }

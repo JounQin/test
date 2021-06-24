@@ -1,0 +1,11 @@
+{
+  "extends": "@1stg",
+  "rules": {
+    "no-void": [
+      2,
+      {
+        "allowAsStatement": true
+      }
+    ]
+  }
+}

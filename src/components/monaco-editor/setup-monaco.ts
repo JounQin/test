@@ -24,14 +24,12 @@ export const setupMonaco = async () => {
 
   window.monaco = monaco
 
-  await Promise.all([
+  const [, { setDiagnosticsOptions }] = await Promise.all([
     import('monaco-editor/esm/vs/basic-languages/yaml/yaml.contribution'),
-    import('monaco-yaml/lib/esm/monaco.contribution'),
+    import('monaco-yaml'),
   ])
 
-  // @ts-expect-error
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  monaco.languages.yaml?.yamlDefaults.setDiagnosticsOptions({
+  setDiagnosticsOptions({
     enableSchemaRequest: true,
     format: true,
     validate: true,

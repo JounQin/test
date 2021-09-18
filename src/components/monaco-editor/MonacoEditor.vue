@@ -3,22 +3,21 @@
 </template>
 <script lang="ts" setup>
 import { onMounted } from '@vue/runtime-core'
-import { defineEmit, defineProps, ref } from 'vue'
+import type { editor } from 'monaco-editor'
+import { defineEmits, defineProps, ref } from 'vue'
 
 import { setupMonaco } from './setup-monaco'
 
-const emit = defineEmit(['editorChange'])
-const props = defineProps({
-  language: {
-    type: String,
-    required: true,
-  },
-  value: {
-    type: String,
-    required: true,
-  },
-  options: Object,
-})
+const emit = defineEmits(['editorChange'])
+
+const props = defineProps<{
+  language: string
+  value: string
+  options?: Omit<
+    editor.IStandaloneEditorConstructionOptions,
+    'language' | 'value'
+  >
+}>()
 
 const elRef = ref<HTMLElement>()
 

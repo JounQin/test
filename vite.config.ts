@@ -5,6 +5,9 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   optimizeDeps: {
-    include: ['js-yaml', 'yaml-ast-parser-custom-tags'],
+    include: ['js-yaml'],
+  },
+  server: {
+    open: true,
   },
 })

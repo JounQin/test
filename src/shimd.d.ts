@@ -24,7 +24,6 @@ declare module 'monaco-editor/esm/vs/editor/edcore.main' {
 }
 
 declare module 'monaco-editor/esm/vs/basic-languages/yaml/yaml.contribution' {}
-declare module 'monaco-yaml/lib/esm/monaco.contribution' {}
 
 declare interface Window {
   monaco: typeof import('monaco-editor')

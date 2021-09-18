@@ -29,8 +29,9 @@ const onEditorChange = async (editor: editor.IStandaloneCodeEditor) => {
     const symbols = await getDocumentSymbols(model!, true, {
       isCancellationRequested: false,
       onCancellationRequested: () => ({
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        dispose() {},
+        dispose() {
+          //
+        },
       }),
     })
     console.log(symbols)

@@ -6,20 +6,33 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "tsc -b",
     "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer || exit 0"
   },
+  "dependencies": {
+    "@angular/compiler": "^13.0.0-rc.0",
+    "synckit": "^0.6.0"
+  },
   "devDependencies": {
-    "@1stg/common-config": "^2.2.0",
-    "typescript": "^4.3.2"
+    "@1stg/common-config": "^2.5.2",
+    "@types/node": "^16.11.1",
+    "typescript": "^4.4.4"
   },
   "resolutions": {
-    "prettier": "^2.3.1"
+    "prettier": "^2.4.1"
   },
   "commitlint": {
     "extends": "@1stg/commitlint-config"
   },
   "eslintConfig": {
-    "extends": "@1stg"
+    "extends": "@1stg",
+    "rules": {
+      "@typescript-eslint/consistent-type-imports": 2
+    }
   },
+  "eslintIgnore": [
+    "lib",
+    "!/.*.js"
+  ],
   "prettier": "@1stg/prettier-config"
 }

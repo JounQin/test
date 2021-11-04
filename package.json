@@ -1,6 +1,7 @@
 {
   "name": "test",
   "version": "0.0.0",
+  "type": "module",
   "repository": "git@github.com:JounQin/test.git",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
@@ -10,13 +11,14 @@
     "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer || exit 0"
   },
   "dependencies": {
-    "@angular/compiler": "^13.0.0-rc.0",
+    "@angular/compiler": "^13.0.0",
     "synckit": "^0.6.0"
   },
   "devDependencies": {
     "@1stg/common-config": "^2.5.2",
-    "@types/node": "^16.11.1",
-    "typescript": "^4.4.4"
+    "@types/node": "^16.11.6",
+    "patch-package": "^6.4.7",
+    "typescript": "^4.6.0-dev.20211104"
   },
   "resolutions": {
     "prettier": "^2.4.1"

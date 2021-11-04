@@ -1,0 +1,17 @@
+diff --git a/node_modules/synckit/package.json b/node_modules/synckit/package.json
+index 60e0771..5d8899d 100644
+--- a/node_modules/synckit/package.json
++++ b/node_modules/synckit/package.json
+@@ -12,10 +12,11 @@
+   "main": "./lib/index.cjs",
+   "module": "./lib/index.js",
+   "exports": {
++    "types": "./lib/index.d.ts",
+     "import": "./lib/index.js",
+     "require": "./lib/index.cjs"
+   },
+-  "types": "lib",
++  "types": "./lib/index.d.ts",
+   "files": [
+     "lib",
+     "!*.tsbuildinfo"

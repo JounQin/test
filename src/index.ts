@@ -3,7 +3,7 @@ import { createSyncFn } from 'synckit'
 
 const parseTemplate = createSyncFn<
   (code: string, filePath: string) => Promise<ParsedTemplate>
->(require.resolve('../worker'))
+>(require.resolve('./worker.cjs'))
 
 console.log(
   parseTemplate(

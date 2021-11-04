@@ -1,6 +1,4 @@
-// @ts-check
-
-const { runAsWorker } = require('synckit')
+import { runAsWorker } from 'synckit'
 
 runAsWorker(async (code, filePath) => {
   const { parseTemplate } = await import('@angular/compiler')

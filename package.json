@@ -1,25 +1,23 @@
 {
   "name": "test",
   "version": "0.0.0",
+  "type": "module",
   "repository": "git@github.com:JounQin/test.git",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer || exit 0"
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "remark-mdx": "^2.1.1",
+    "remark-parse": "^10.0.1",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
-    "@1stg/common-config": "^2.2.0",
-    "typescript": "^4.3.2"
-  },
-  "resolutions": {
-    "prettier": "^2.3.1"
-  },
-  "commitlint": {
-    "extends": "@1stg/commitlint-config"
-  },
-  "eslintConfig": {
-    "extends": "@1stg"
+    "@1stg/prettier-config": "^2.2.0",
+    "@1stg/tsconfig": "^2.0.1"
   },
   "prettier": "@1stg/prettier-config"
 }

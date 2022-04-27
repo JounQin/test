@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@1stg/prettier-config@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@1stg/prettier-config/-/prettier-config-2.2.0.tgz#4b8523e335da99d19f632f77953624dee145d946"
-  integrity sha512-gfoexQu/cl31I05vnIq5GOK3R1d/2Tid7Qv0p61QaaWqEQaqVeGO/3rk40Pt9ZfwUubFQNK58uvhh/q/rOOK1g==
+"@1stg/prettier-config@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@1stg/prettier-config/-/prettier-config-3.0.0.tgz#218f9a4fdea8f6c765d4affad4a09e5e7e8d3220"
+  integrity sha512-xRpVwywgfaA8iVIpsuew1FcdiMmMV8C5gFepT33wNNzoNJMUBtkbNIhYTttTxpqFziVW+AuYrVDXB/A4z5TGFg==
   dependencies:
-    "@prettier/plugin-pug" "^1.20.0"
-    "@prettier/plugin-ruby" "^2.0.0"
-    "@prettier/plugin-xml" "^2.0.1"
+    "@prettier/plugin-pug" "^2.0.0"
+    "@prettier/plugin-ruby" "^2.1.0"
+    "@prettier/plugin-xml" "^2.1.0"
     prettier-plugin-pkg "^0.13.0"
-    prettier-plugin-sh "^0.10.0"
-    prettier-plugin-svelte "^2.6.0"
+    prettier-plugin-sh "^0.10.1"
+    prettier-plugin-svelte "^2.7.0"
     prettier-plugin-toml "^0.3.1"
 
 "@1stg/tsconfig@^2.0.1":
@@ -32,21 +32,21 @@
     tiny-glob "^0.2.9"
     tslib "^2.3.1"
 
-"@prettier/plugin-pug@^1.20.0":
-  version "1.20.1"
-  resolved "https://registry.yarnpkg.com/@prettier/plugin-pug/-/plugin-pug-1.20.1.tgz#b8fdd1c327fc6fbef3e1d2ae5544baa40e8c754e"
-  integrity sha512-pMAfomxIiPHKn01idtsnDJFEqTGMzMzJajo52lWw3urDasJyf5gwQKqyOp1gB1yIbC5K3OBvsFtSMrOTbxHo6w==
+"@prettier/plugin-pug@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@prettier/plugin-pug/-/plugin-pug-2.0.0.tgz#1d0d7f36a78c44c0c469bc7103d2f8d4bfe9be3a"
+  integrity sha512-NCZ2/aBpl2IKxoiOfT55NJjQXsRmFkhTHT4o54VmxwIzgiAu5BbRdNsROdbgm0YG7ocTnfG3aKcjI+6S866wfQ==
   dependencies:
     pug-lexer "^5.0.0"
 
-"@prettier/plugin-ruby@^2.0.0":
+"@prettier/plugin-ruby@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@prettier/plugin-ruby/-/plugin-ruby-2.1.0.tgz#2df48c1c004fc9dec18a72f441d43d54137b25a6"
   integrity sha512-lAoYFoDnwlxM3jl+dS7yrmxD49d3nbKFTBuhHx3VTPoAwmOOKOIO4nRJTTBWF+rS7KUAVn2XPLwRR0Obh/KW6A==
   dependencies:
     prettier ">=2.3.0"
 
-"@prettier/plugin-xml@^2.0.1":
+"@prettier/plugin-xml@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@prettier/plugin-xml/-/plugin-xml-2.1.0.tgz#28d82b5599bf36138a863eb5cbb159e5b68958a2"
   integrity sha512-gmmvjwOh6GcJ4yTr4L0IVWwUrML/P1xHotwAMlY8hTIHYcmaRzeJKou8omvAaYsjMXWXxfBP7ge0meadDStn+g==
@@ -90,15 +90,10 @@
   dependencies:
     "@types/estree" "*"
 
-"@types/estree@*":
+"@types/estree@*", "@types/estree@^0.0.51":
   version "0.0.51"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.51.tgz#cfd70924a25a3fd32b218e5e420e6897e1ac4f40"
   integrity sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==
-
-"@types/estree@^0.0.50":
-  version "0.0.50"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.50.tgz#1e0caa9364d3fccd2931c3ed96fdbeaa5d4cca83"
-  integrity sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==
 
 "@types/hast@^2.0.0":
   version "2.3.4"
@@ -142,9 +137,9 @@ acorn@^7.1.1:
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
 acorn@^8.0.0:
-  version "8.7.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.0.tgz#90951fde0f8f09df93549481e5fc141445b791cf"
-  integrity sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==
+  version "8.7.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
+  integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
 
 bail@^2.0.0:
   version "2.0.2"
@@ -533,9 +528,9 @@ micromark-extension-mdx-md@^1.0.0:
     micromark-util-types "^1.0.0"
 
 micromark-extension-mdxjs-esm@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/micromark-extension-mdxjs-esm/-/micromark-extension-mdxjs-esm-1.0.2.tgz#df0c48743a0b1988119489c68314160b7942ffa6"
-  integrity sha512-bIaxblNIM+CCaJvp3L/V+168l79iuNmxEiTU6i3vB0YuDW+rumV64BFMxvhfRDxaJxQE1zD5vTPdyLBbW4efGA==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/micromark-extension-mdxjs-esm/-/micromark-extension-mdxjs-esm-1.0.3.tgz#630d9dc9db2c2fd470cac8c1e7a824851267404d"
+  integrity sha512-2N13ol4KMoxb85rdDwTAC6uzs8lMX0zeqpcyx7FhS7PxXomOnLactu8WI8iBNXW8AVyea3KIJd/1CKnUmwrK9A==
   dependencies:
     micromark-core-commonmark "^1.0.0"
     micromark-util-character "^1.0.0"
@@ -677,15 +672,16 @@ micromark-util-encode@^1.0.0:
   integrity sha512-U2s5YdnAYexjKDel31SVMPbfi+eF8y1U4pfiRW/Y8EFVCy/vgxk/2wWTxzcqE71LHtCuCzlBDRU2a5CQ5j+mQA==
 
 micromark-util-events-to-acorn@^1.0.0:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/micromark-util-events-to-acorn/-/micromark-util-events-to-acorn-1.0.4.tgz#07d26cd675dbca8c38b8d9aff2d4cdc91c9997aa"
-  integrity sha512-dpo8ecREK5s/KMph7jJ46RLM6g7N21CMc9LAJQbDLdbQnTpijigkSJPTIfLXZ+h5wdXlcsQ+b6ufAE9v76AdgA==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/micromark-util-events-to-acorn/-/micromark-util-events-to-acorn-1.0.6.tgz#3bfc9a59825b14dd31e4ff8d566a0c76ecce1751"
+  integrity sha512-+kUMe2kNGy4mljNVt+YmFfwomSIVqX3NI6ePrk6SIl/0GaR53a6eUIGmhV5DDUkbLPPNWgVFCS6ExOqb0WFgHQ==
   dependencies:
     "@types/acorn" "^4.0.0"
-    "@types/estree" "^0.0.50"
+    "@types/estree" "^0.0.51"
     estree-util-visit "^1.0.0"
     micromark-util-types "^1.0.0"
     uvu "^0.5.0"
+    vfile-location "^4.0.0"
     vfile-message "^3.0.0"
 
 micromark-util-html-tag-name@^1.0.0:
@@ -770,9 +766,9 @@ ms@2.1.2:
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
 nanoid@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.2.tgz#c89622fafb4381cd221421c69ec58547a1eec557"
-  integrity sha512-CuHBogktKwpm5g2sRgv83jEy2ijFzBwMoYA60orPDR7ynsLijJDqgsi4RDGj3OJpy3Ieb+LYwiRmIOGyytgITA==
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.3.tgz#fd8e8b7aa761fe807dba2d1b98fb7241bb724a25"
+  integrity sha512-p1sjXuopFs0xg+fPASzQ28agW1oHD7xDsd9Xkf3T15H3c/cifrFHVwrh74PdoklAPi+i7MdRsE47vm2r6JoB+w==
 
 object-assign@^4.1.1:
   version "4.1.1"
@@ -817,7 +813,7 @@ prettier-plugin-pkg@^0.13.0:
   resolved "https://registry.yarnpkg.com/prettier-plugin-pkg/-/prettier-plugin-pkg-0.13.0.tgz#27f89035879f85b62956a6d99b2692a69e898962"
   integrity sha512-0eUQf15kmvcTT7x9L6p0ZX3BDLZMLdO47426e3Huc90rv0HLuiY9GTifVXCoDGaQw4EUjpOllNBEg0WS0xOHCw==
 
-prettier-plugin-sh@^0.10.0:
+prettier-plugin-sh@^0.10.1:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/prettier-plugin-sh/-/prettier-plugin-sh-0.10.1.tgz#70951b933238803fa67a0d5752d6667963130057"
   integrity sha512-bEcEMvgivqNB/9r9UIN6CTPoux7pmZKFtzDkEb/hSwj/j/PlHfNpiOwLtDZ44D8RtUAZloMz7j1ucqdPqcTawQ==
@@ -825,7 +821,7 @@ prettier-plugin-sh@^0.10.0:
     sh-syntax "^0.1.4"
     synckit "^0.7.0"
 
-prettier-plugin-svelte@^2.6.0:
+prettier-plugin-svelte@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/prettier-plugin-svelte/-/prettier-plugin-svelte-2.7.0.tgz#ecfa4fe824238a4466a3497df1a96d15cf43cabb"
   integrity sha512-fQhhZICprZot2IqEyoiUYLTRdumULGRvw0o4dzl5jt0jfzVWdGqeYW27QTWAeXhoupEZJULmNoH3ueJwUWFLIA==
@@ -946,9 +942,9 @@ trough@^2.0.0:
   integrity sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==
 
 tslib@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
-  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
+  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 unified@^10.0.0, unified@^10.1.2:
   version "10.1.2"
@@ -998,7 +994,7 @@ unist-util-visit-parents@^5.0.0:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
 
-unist-util-visit@^4.0.0, unist-util-visit@^4.1.0:
+unist-util-visit@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-4.1.0.tgz#f41e407a9e94da31594e6b1c9811c51ab0b3d8f5"
   integrity sha512-n7lyhFKJfVZ9MnKtqbsqkQEk5P1KShj0+//V7mAcoI6bpbUjh3C/OG8HVD+pBihfh6Ovl01m8dkcv9HNqYajmQ==
@@ -1016,6 +1012,14 @@ uvu@^0.5.0:
     diff "^5.0.0"
     kleur "^4.0.3"
     sade "^1.7.3"
+
+vfile-location@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/vfile-location/-/vfile-location-4.0.1.tgz#06f2b9244a3565bef91f099359486a08b10d3a95"
+  integrity sha512-JDxPlTbZrZCQXogGheBHjbRWjESSPEak770XwWPfw5mTc1v1nWGLB/apzZxsx8a0SJVfF8HK8ql8RD308vXRUw==
+  dependencies:
+    "@types/unist" "^2.0.0"
+    vfile "^5.0.0"
 
 vfile-message@^3.0.0:
   version "3.1.2"

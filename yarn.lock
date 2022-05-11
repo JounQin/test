@@ -20,7 +20,7 @@
   resolved "https://registry.yarnpkg.com/@1stg/tsconfig/-/tsconfig-2.0.1.tgz#37ff4e5771d805a787e6415a866f7aa0c02f71e7"
   integrity sha512-CjtmDn/zNM1M0IVid340V7revyabea324zJKpgBiC556akKZzAWaTVW+DbjPKptNbUmH8NnahpGfXv2384BC9A==
 
-"@pkgr/utils@^2.0.3":
+"@pkgr/utils@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.1.0.tgz#66a4be2df4fc8ae50d730666855f6a6df833a725"
   integrity sha512-Va5LTLVoPIH8CrV170zXLSDtCJ6eG6uVXYwwsDYOOeec0MdkhvJzKaxvA+hGJRWFl5I4VBQBs5pwljaI4TG5OA==
@@ -113,6 +113,11 @@
   version "0.7.31"
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
+
+"@types/node@^17.0.32":
+  version "17.0.32"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.32.tgz#51d59d7a90ef2d0ae961791e0900cad2393a0149"
+  integrity sha512-eAIcfAvhf/BkHcf4pkLJ7ECpBAhh9kcxRBpip9cTiO+hf+aJrsxYxBeS6OXvOd9WqNAJmavXVpZvY1rBjNsXmw==
 
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.6"
@@ -672,9 +677,9 @@ micromark-util-encode@^1.0.0:
   integrity sha512-U2s5YdnAYexjKDel31SVMPbfi+eF8y1U4pfiRW/Y8EFVCy/vgxk/2wWTxzcqE71LHtCuCzlBDRU2a5CQ5j+mQA==
 
 micromark-util-events-to-acorn@^1.0.0:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/micromark-util-events-to-acorn/-/micromark-util-events-to-acorn-1.0.6.tgz#3bfc9a59825b14dd31e4ff8d566a0c76ecce1751"
-  integrity sha512-+kUMe2kNGy4mljNVt+YmFfwomSIVqX3NI6ePrk6SIl/0GaR53a6eUIGmhV5DDUkbLPPNWgVFCS6ExOqb0WFgHQ==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-events-to-acorn/-/micromark-util-events-to-acorn-1.1.0.tgz#9891638e201c266484d0af7cd2505d208f73db9d"
+  integrity sha512-hB8HzidNt/Us5q2BvqXj8eeEm0U9rRfnZxcA9T65JRUMAY4MbfJRAFm7m9fXMAdSHJiVPmajsp8/rp6/FlHL8A==
   dependencies:
     "@types/acorn" "^4.0.0"
     "@types/estree" "^0.0.51"
@@ -766,9 +771,9 @@ ms@2.1.2:
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
 nanoid@^3.3.2:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.3.tgz#fd8e8b7aa761fe807dba2d1b98fb7241bb724a25"
-  integrity sha512-p1sjXuopFs0xg+fPASzQ28agW1oHD7xDsd9Xkf3T15H3c/cifrFHVwrh74PdoklAPi+i7MdRsE47vm2r6JoB+w==
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
+  integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
 object-assign@^4.1.1:
   version "4.1.1"
@@ -809,14 +814,14 @@ picocolors@^1.0.0:
   integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
 prettier-plugin-pkg@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-pkg/-/prettier-plugin-pkg-0.13.0.tgz#27f89035879f85b62956a6d99b2692a69e898962"
-  integrity sha512-0eUQf15kmvcTT7x9L6p0ZX3BDLZMLdO47426e3Huc90rv0HLuiY9GTifVXCoDGaQw4EUjpOllNBEg0WS0xOHCw==
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-pkg/-/prettier-plugin-pkg-0.13.1.tgz#81a0ee8e5f361fec7373313568767711f10e9527"
+  integrity sha512-/ZUvdE0lETqsysOMDL8LsK5p+ZGNeTkxZ547hdruxgjBI6vi+fnnfF4XAGv5VBZRnthqMz0KKPjY1NnqIw4B9g==
 
 prettier-plugin-sh@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-sh/-/prettier-plugin-sh-0.10.1.tgz#70951b933238803fa67a0d5752d6667963130057"
-  integrity sha512-bEcEMvgivqNB/9r9UIN6CTPoux7pmZKFtzDkEb/hSwj/j/PlHfNpiOwLtDZ44D8RtUAZloMz7j1ucqdPqcTawQ==
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-sh/-/prettier-plugin-sh-0.10.2.tgz#ae73a5b59db1bdf6908ecf3183dbda6b2cf09452"
+  integrity sha512-4HnLebvyiZ8Ilj5cEu5D8rCxrHqCE/1c+6GhZ0rARxFfqHhxcLBcG6Lx48wAD00IPYj2YPDtfnSlS9owWtLhvA==
   dependencies:
     sh-syntax "^0.1.4"
     synckit "^0.7.0"
@@ -921,12 +926,12 @@ stringify-entities@^4.0.0:
     character-entities-legacy "^3.0.0"
 
 synckit@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/synckit/-/synckit-0.7.0.tgz#59abd4ec3ee4e7b645dbd1e6e188920c9494392c"
-  integrity sha512-NbpamGIw1300xjPCLCVkhtSgGVfONitrmJA4CD54f2P47GxW5rlsCiajAYrqbz0H0PmVSPA2slZjEfJpUfap0Q==
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/synckit/-/synckit-0.7.1.tgz#9aa3a6c81f534ef940ad22fa9a3bae116850ead8"
+  integrity sha512-Cvv0Nzgs4Z0V6761qp4CU2+C15HRmnHaDd+sAtisbOnzIZ5wgl3ne076k28cHo+oY6eN/w0RNzRrf7CJz8dWJg==
   dependencies:
-    "@pkgr/utils" "^2.0.3"
-    tslib "^2.3.1"
+    "@pkgr/utils" "^2.1.0"
+    tslib "^2.4.0"
 
 tiny-glob@^0.2.9:
   version "0.2.9"
@@ -941,7 +946,7 @@ trough@^2.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-2.1.0.tgz#0f7b511a4fde65a46f18477ab38849b22c554876"
   integrity sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==
 
-tslib@^2.3.1:
+tslib@^2.3.1, tslib@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==

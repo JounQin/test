@@ -1,6 +1,6 @@
 // @ts-check
 
-import fs from 'fs/promises'
+import fs from 'node:fs/promises'
 
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
@@ -13,7 +13,7 @@ const processor = unified()
   .use(remarkParse)
   .use(remarkMdx, {
     acornOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 'latest',
       onToken: tokens,
     },
   })

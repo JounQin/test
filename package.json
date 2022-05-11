@@ -12,7 +12,8 @@
   "dependencies": {
     "remark-mdx": "^2.1.1",
     "remark-parse": "^10.0.1",
-    "unified": "^10.1.2"
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
     "@1stg/prettier-config": "^3.0.0",

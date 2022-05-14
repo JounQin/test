@@ -9,10 +9,6 @@ const acorn = acornJsx({
   allowNamespacedObjects: true,
 })(_acorn.Parser)
 
-/** @type {Record<string, import('acorn').TokenType>} */
-// @ts-expect-error
-const jsxTokTypes = acorn.acornJsx.tokTypes
-
 /** @type Array.<import('acorn').Token> */
 const tokens = []
 
@@ -24,7 +20,7 @@ const main = async () => {
     onToken: tokens,
   })
 
-  await fs.writeFile('test1.json', JSON.stringify(tokens, null, 2))
+  await fs.writeFile('test1.json', JSON.stringify(tokens, null, 2) + '\n')
 }
 
 main()

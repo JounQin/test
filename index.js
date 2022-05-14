@@ -8,7 +8,12 @@ import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkMdx from 'remark-mdx'
 import { visit } from 'unist-util-visit'
+import { ok as assert } from 'uvu/assert'
 
+/** @typedef {import('acorn').Position} AcornPosition */
+/** @typedef {import('acorn').SourceLocation} SourceLocation */
+/** @typedef {import('acorn').Token} Token */
+/** @typedef {import('acorn').TokenType} TokenType */
 /** @typedef {import('unist').Position} Position */
 
 /**
@@ -16,10 +21,10 @@ import { visit } from 'unist-util-visit'
  */
 const plugin = () => {}
 
-/** @type Array.<import('acorn').Token> */
+/** @type {Array<Token>} */
 const tokens = []
 
-/** @type {Record<string, import('acorn').TokenType>} */
+/** @type {Record<string, TokenType>} */
 const jsxTokTypes = acornJsx(
   {
     allowNamespacedObjects: true,
@@ -39,8 +44,59 @@ const processor = unified()
 
 const tt = acorn.tokTypes
 
+/**
+ *
+ * @param {string} text
+ * @param {number} offset
+ * @returns {AcornPosition}
+ */
+const getPositionAt = (text, offset) => {
+  assert(text.length >= offset)
+
+  let currOffset = 0
+
+  const lines = text.split('\n')
+
+  for (let index = 0; index < lines.length; index++) {
+    const line = index + 1
+    const nextOffset = currOffset + lines[index].length
+
+    if (nextOffset >= offset) {
+      return {
+        line,
+        column: offset - currOffset,
+        offset,
+      }
+    }
+
+    currOffset = nextOffset + 1 // add a line break `\n` offset
+  }
+
+  throw new Error(`Invalid offset: ${offset} for text length: ${text.length}`)
+}
+
 const main = async () => {
   const text = await fs.readFile('test.mdx', 'utf8')
+
+  /**
+   *
+   * @param {TokenType} type
+   * @param {number} start
+   * @param {number} end
+   * @param {string} [value]
+   * @returns {Token}
+   */
+  const newToken = (type, start, end, value) => ({
+    type,
+    value,
+    start,
+    end,
+    loc: {
+      start: getPositionAt(text, start),
+      end: getPositionAt(text, end),
+    },
+    range: [start, end],
+  })
 
   const total = text.length
 
@@ -73,28 +129,42 @@ const main = async () => {
   const root = processor.parse(text)
 
   visit(root, node => {
-    // 'mdxJsxAttribute',
-    //   'mdxJsxAttributeValueExpression',
     if (
+      node.type !== 'mdxFlowExpression' &&
       node.type !== 'mdxJsxFlowElement' &&
-      node.type !== 'mdxJsxTextElement'
+      node.type !== 'mdxJsxTextElement' &&
+      node.type !== 'text'
     ) {
       return
     }
 
     console.log(node)
 
-    const nodePos = /** @type {Position} */ (node.position)
+    const nodePos = node.position
 
-    const nodeStart = /** @type {number} */ (nodePos.start.offset)
-    const nodeEnd = /** @type {number} */ (nodePos.end.offset)
+    assert(nodePos)
 
-    tokens.push({
-      type: jsxTokTypes.jsxTagStart,
-      value: undefined,
-      start: nodeStart,
-      end: nodeStart + 1,
-    })
+    const nodeStart = nodePos.start.offset
+    const nodeEnd = nodePos.end.offset
+
+    assert(nodeStart != null)
+    assert(nodeEnd != null)
+
+    if (node.type === 'mdxFlowExpression') {
+      tokens.push(
+        newToken(tt.braceL, nodeStart, nodeStart + 1),
+        newToken(tt.braceR, nodeEnd - 1, nodeEnd),
+      )
+
+      return
+    }
+
+    if (node.type === 'text') {
+      tokens.push(newToken(jsxTokTypes.jsxText, nodeStart, nodeEnd, node.value))
+      return
+    }
+
+    tokens.push(newToken(jsxTokTypes.jsxTagStart, nodeStart, nodeStart + 1))
 
     const nodeName = node.name
     const nodeNameLength = nodeName?.length ?? 0
@@ -104,14 +174,16 @@ const main = async () => {
     if (nodeName) {
       nodeNameStart = /** @type {number} */ (nextCharOffset(nodeStart + 1))
 
-      console.assert(nodeNameStart !== undefined)
+      assert(nodeNameStart)
 
-      tokens.push({
-        type: jsxTokTypes.jsxName,
-        value: nodeName,
-        start: nodeNameStart,
-        end: nodeNameStart + nodeNameLength,
-      })
+      tokens.push(
+        newToken(
+          jsxTokTypes.jsxName,
+          nodeNameStart,
+          nodeNameStart + nodeNameLength,
+          nodeName,
+        ),
+      )
     }
 
     // will always add 1 in `nextCharOffset`, so we minus 1 here
@@ -120,11 +192,25 @@ const main = async () => {
     node.attributes.forEach(attr => {
       // already handled by acorn
       if (attr.type === 'mdxJsxExpressionAttribute') {
-        const data = /** @type {{estree: import('estree').Program}} */ (
-          attr.data
+        assert(attr.data)
+        assert(attr.data.estree)
+        assert(attr.data.estree.range)
+
+        let [attrValStart, attrValEnd] = attr.data.estree.range
+
+        attrValStart = /** @type {number} */ (prevCharOffset(attrValStart - 1))
+        attrValEnd = /** @type {number} */ (nextCharOffset(attrValEnd))
+
+        assert(text[attrValStart] === '{')
+        assert(text[attrValEnd] === '}')
+
+        lastAttrOffset = attrValEnd
+
+        tokens.push(
+          newToken(tt.braceL, attrValStart, attrValStart + 1),
+          newToken(tt.braceR, attrValEnd, attrValEnd + 1),
         )
-        lastAttrOffset = /** @type {[number, number]} */ (data.estree.range)[1]
-        console.log('lastAttrOffset:', lastAttrOffset)
+
         return
       }
 
@@ -141,19 +227,19 @@ const main = async () => {
         nextCharOffset(lastAttrOffset + 1)
       )
 
-      console.log('attrStart:', attrStart)
-
-      console.assert(attrStart != null)
+      assert(attrStart != null)
 
       const attrName = attr.name
       const attrNameLength = attrName.length
 
-      tokens.push({
-        type: jsxTokTypes.jsxName,
-        value: attrName,
-        start: attrStart,
-        end: attrStart + attrNameLength,
-      })
+      tokens.push(
+        newToken(
+          jsxTokTypes.jsxName,
+          attrStart,
+          attrStart + attrNameLength,
+          attrName,
+        ),
+      )
 
       const attrValue = attr.value
 
@@ -166,23 +252,33 @@ const main = async () => {
         nextCharOffset(attrStart + attrNameLength)
       )
 
-      console.log('text[attrEqualOffset]:', text[attrEqualOffset])
+      assert(text[attrEqualOffset] === '=')
 
-      console.assert(text[attrEqualOffset] === '=')
-
-      tokens.push({
-        type: tt.eq,
-        value: '=',
-        start: attrEqualOffset,
-        end: attrEqualOffset + 1,
-      })
+      tokens.push(newToken(tt.eq, attrEqualOffset, attrEqualOffset + 1, '='))
 
       // `mdxJsxAttributeValueExpression`, already handled by acorn
       if (typeof attrValue === 'object') {
         const data = /** @type {{estree: import('estree').Program}} */ (
           attrValue.data
         )
-        lastAttrOffset = /** @type {[number, number]} */ (data.estree.range)[1]
+
+        let [attrValStart, attrValEnd] = /** @type {[number, number]} */ (
+          data.estree.range
+        )
+
+        attrValStart = /** @type {number} */ (prevCharOffset(attrValStart - 1))
+        attrValEnd = /** @type {number} */ (nextCharOffset(attrValEnd))
+
+        assert(text[attrValStart] === '{')
+        assert(text[attrValEnd] === '}')
+
+        lastAttrOffset = attrValEnd
+
+        tokens.push(
+          newToken(tt.braceL, attrValStart, attrValStart + 1),
+          newToken(tt.braceR, attrValEnd, attrValEnd + 1),
+        )
+
         return
       }
 
@@ -192,23 +288,22 @@ const main = async () => {
 
       const attrQuote = text[attrQuoteOffset]
 
-      console.assert(attrQuote === '"' || attrQuote === "'")
+      assert(attrQuote === '"' || attrQuote === "'")
 
-      tokens.push({
-        type: tt.string,
-        value: attrValue,
-        start: attrQuoteOffset,
-        end: attrQuoteOffset + attrValue.length + 2,
-      })
+      tokens.push(
+        newToken(
+          tt.string,
+          attrQuoteOffset,
+          attrQuoteOffset + attrValue.length + 2,
+          attrValue,
+        ),
+      )
 
       lastAttrOffset = /** @type {number} */ (
         nextCharOffset(attrQuoteOffset + attrValue.length + 1)
       )
 
-      console.log('lastAttrOffset:', lastAttrOffset)
-      console.log('text[lastAttrOffset]:', text[lastAttrOffset])
-
-      console.assert(text[lastAttrOffset] === attrQuote)
+      assert(text[lastAttrOffset] === attrQuote)
     })
 
     const nextOffset = /** @type {number} */ (
@@ -219,73 +314,65 @@ const main = async () => {
 
     // self closing tag
     if (nextChar === '/') {
-      tokens.push({
-        type: tt.slash,
-        value: '/',
-        start: nextOffset,
-        end: nextOffset + 1,
-      })
+      tokens.push(newToken(tt.slash, nextOffset, nextOffset + 1, '/'))
     } else {
-      console.assert(nextChar === '>')
-
-      tokens.push({
-        type: jsxTokTypes.jsxTagEnd,
-        value: undefined,
-        start: nextOffset,
-        end: nextOffset + 1,
-      })
+      assert(nextChar === '>')
 
       const prevOffset = /** @type {number} */ (prevCharOffset(nodeEnd - 2))
 
-      tokens.push({
-        type: jsxTokTypes.jsxName,
-        value: nodeName,
-        start: prevOffset + 1 - nodeNameLength,
-        end: prevOffset + 1,
-      })
+      if (nodeName) {
+        tokens.push(
+          newToken(
+            jsxTokTypes.jsxName,
+            prevOffset + 1 - nodeNameLength,
+            prevOffset + 1,
+            nodeName,
+          ),
+        )
+      }
 
       const slashOffset = /** @type {number} */ (
         prevCharOffset(prevOffset - nodeNameLength)
       )
 
-      console.assert(text[slashOffset] === '/')
+      assert(text[slashOffset] === '/')
 
-      tokens.push({
-        type: tt.slash,
-        value: '/',
-        start: slashOffset,
-        end: slashOffset + 1,
-      })
+      tokens.push(newToken(tt.slash, slashOffset, slashOffset + 1, '/'))
 
       const tagStartOffset = /** @type {number} */ (
         prevCharOffset(slashOffset - 1)
       )
 
-      console.assert(text[tagStartOffset] === '<')
+      assert(text[tagStartOffset] === '<')
 
-      tokens.push({
-        type: jsxTokTypes.jsxTagStart,
-        value: undefined,
-        start: tagStartOffset,
-        end: tagStartOffset + 1,
-      })
+      tokens.push(
+        newToken(jsxTokTypes.jsxTagStart, tagStartOffset, tagStartOffset + 1),
+      )
     }
 
-    tokens.push({
-      type: jsxTokTypes.jsxTagEnd,
-      value: undefined,
-      start: nodeEnd - 1,
-      end: nodeEnd,
-    })
+    tokens.push(newToken(jsxTokTypes.jsxTagEnd, nodeEnd - 1, nodeEnd))
   })
+
+  tokens.push(newToken(tt.eof, total, total))
 
   await fs.writeFile(
     'test2.json',
     JSON.stringify(
-      tokens.sort((a, b) => a.start - b.start),
+      tokens
+        .filter(
+          t =>
+            !(
+              t.start === t.end &&
+              (t.type === tt.braceL ||
+                t.type === tt.braceR ||
+                t.type === tt.parenL ||
+                t.type === tt.parenR)
+            ),
+        )
+        .sort((a, b) => a.start - b.start),
       null,
       2,
-    ),
+    ) + '\n',
   )
 }
 

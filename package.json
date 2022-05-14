@@ -7,6 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "prepare": "yarn-deduplicate -s fewer",
     "test": "node index.js"
   },
   "dependencies": {
@@ -16,9 +17,11 @@
     "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
-    "@1stg/prettier-config": "^3.0.0",
+    "@1stg/prettier-config": "^3.1.0",
     "@1stg/tsconfig": "^2.0.1",
-    "@types/node": "^17.0.32"
+    "@types/node": "^17.0.33",
+    "uvu": "^0.5.3",
+    "yarn-deduplicate": "^5.0.0"
   },
   "prettier": "@1stg/prettier-config"
 }

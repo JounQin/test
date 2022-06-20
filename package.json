@@ -1,0 +1,94 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "type": "module",
+  "repository": "git+https://github.com/JounQin/test.git",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prepare": "yarn-deduplicate -s fewer"
+  },
+  "devDependencies": {
+    "eslint-config-xo-react": "^0.27.0",
+    "eslint-plugin-mdx": "^2.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "remark-lint-no-html": "^3.1.1",
+    "remark-preset-prettier": "^1.0.0",
+    "remark-preset-wooorm": "^9.1.0",
+    "xo": "^0.50.0",
+    "yarn-deduplicate": "^5.0.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "extensions": [
+      "md",
+      "mdx"
+    ],
+    "rules": {
+      "indent": 0,
+      "semi": 0
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.md"
+        ],
+        "extends": [
+          "plugin:mdx/recommended",
+          "plugin:prettier/recommended"
+        ],
+        "rules": {
+          "prettier/prettier": [
+            "error",
+            {
+              "parser": "markdown"
+            }
+          ]
+        }
+      },
+      {
+        "files": [
+          "**/*.mdx"
+        ],
+        "extends": [
+          "xo-react",
+          "plugin:mdx/recommended",
+          "plugin:prettier/recommended"
+        ],
+        "rules": {
+          "prettier/prettier": [
+            "error",
+            {
+              "parser": "mdx"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm",
+      "preset-prettier",
+      [
+        "lint-no-html",
+        false
+      ],
+      [
+        "retext",
+        false
+      ]
+    ]
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}

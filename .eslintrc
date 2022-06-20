@@ -1,0 +1,42 @@
+{
+  "root": true,
+  "rules": {
+    "no-unused-expressions": "error",
+    "no-unused-vars": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.md"],
+      "extends": ["plugin:mdx/recommended", "plugin:prettier/recommended"],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "markdown"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/*.mdx"],
+      "extends": [
+        "plugin:react/recommended",
+        "plugin:mdx/recommended",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "mdx"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "type": "module",
+  "repository": "git+https://github.com/JounQin/test.git",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prepare": "yarn-deduplicate -s fewer",
+    "api": "tsx scripts/api"
+  },
+  "devDependencies": {
+    "@1stg/common-config": "^4.2.3",
+    "@types/prettier": "^2.6.3",
+    "prettier": "^2.7.1",
+    "tsx": "^3.5.0"
+  },
+  "eslintConfig": {
+    "extends": "@1stg"
+  },
+  "prettier": "@1stg/prettier-config"
+}

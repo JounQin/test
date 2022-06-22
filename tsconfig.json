@@ -1,0 +1,9 @@
+{
+  "extends": "@1stg/tsconfig/app",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    }
+  }
+}

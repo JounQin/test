@@ -1,0 +1,9 @@
+{
+  "extends": "@1stg/tsconfig/nodenext",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "test-tsx",
+  "version": "0.0.0",
+  "type": "module",
+  "repository": "git+https://github.com/JounQin/test.git",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "tsx scripts/test"
+  },
+  "devDependencies": {
+    "@1stg/prettier-config": "^4.0.1",
+    "@1stg/tsconfig": "^2.3.3",
+    "prettier": "^3.2.5",
+    "svelte": "^4.2.16",
+    "tsx": "^4.10.1"
+  },
+  "eslintConfig": {
+    "extends": "@1stg"
+  },
+  "prettier": "@1stg/prettier-config"
+}

@@ -306,17 +306,23 @@ const main = async () => {
       assert(text[lastAttrOffset] === attrQuote)
     })
 
-    const nextOffset = /** @type {number} */ (
-      nextCharOffset(lastAttrOffset + 1)
-    )
+    let nextOffset = /** @type {number} */ (nextCharOffset(lastAttrOffset + 1))
 
-    const nextChar = text[nextOffset]
+    let nextChar = text[nextOffset]
 
     // self closing tag
     if (nextChar === '/') {
       tokens.push(newToken(tt.slash, nextOffset, nextOffset + 1, '/'))
     } else {
-      assert(nextChar === '>')
+      if (nextChar !== '>') {
+        nextOffset = /** @type {number} */ (nextCharOffset(lastAttrOffset))
+        nextChar = text[nextOffset]
+      }
+
+      assert(
+        nextChar === '>',
+        `\`nextChar\` should be '>' but actually is '${nextChar}'`,
+      )
 
       const prevOffset = /** @type {number} */ (prevCharOffset(nodeEnd - 2))
 

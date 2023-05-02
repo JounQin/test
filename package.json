@@ -1,0 +1,19 @@
+{
+  "name": "ts-rollup",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "repository": "git@github.com:JounQin/test.git",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@types/node": "^18.16.3",
+    "rollup": "^3.21.3",
+    "typescript": "^5.0.4"
+  }
+}

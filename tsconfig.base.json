@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext"],
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "ESNext"
+  }
+}

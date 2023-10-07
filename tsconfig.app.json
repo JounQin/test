@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.base",
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"]
+  },
+  "include": ["./shim.d.ts", "./src/**/*.ts", "./src/**/*.vue"]
+}

@@ -1,5 +1,6 @@
+!/.yarn/plugins
+!/.yarn/releases
 .yarn/
-!.yarn/plugins
 node_modules
 *.iml
 *.log

@@ -1,16 +1,26 @@
 {
-  "name": "test",
+  "name": "vue-tsc-test",
   "version": "0.0.0",
   "repository": "git@github.com:JounQin/test.git",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "private": true,
+  "packageManager": "yarn@3.6.4",
   "scripts": {
-    "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer || exit 0"
+    "lint": "vue-tsc --noEmit",
+    "prepare": "simple-git-hooks|| exit 0"
   },
   "devDependencies": {
+    "@1stg/commitlint-config": "^3.2.0",
     "@1stg/common-config": "^8.0.1",
-    "typescript": "^5.0.4"
+    "@1stg/lint-staged": "^3.4.1",
+    "@1stg/simple-git-hooks": "^0.2.3",
+    "commitlint": "^17.7.2",
+    "lint-staged": "^14.0.1",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.4.11",
+    "vue-tsc": "^1.8.16"
   },
   "resolutions": {
     "prettier": "^2.3.1"

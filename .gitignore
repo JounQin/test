@@ -1,4 +1,4 @@
-.yarn/
+.yarn/*
 !.yarn/plugins
 node_modules
 *.iml

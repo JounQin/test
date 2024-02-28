@@ -6,25 +6,19 @@
   "license": "MIT",
   "private": true,
   "packageManager": "yarn@4.1.0",
-  "scripts": {
-    "prepare": "simple-git-hooks"
-  },
   "devDependencies": {
-    "@1stg/common-config": "^10.0.0",
-    "@commitlint/cli": "^18.6.1",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
-    "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.3.3"
+    "@commitlint/cli": "^19.0.1",
+    "@commitlint/config-conventional": "^19.0.0"
   },
-  "resolutions": {
-    "prettier": "^3.2.5"
-  },
-  "commitlint": {
-    "extends": "@1stg/commitlint-config"
-  },
-  "eslintConfig": {
-    "extends": "@1stg"
-  },
-  "prettier": "@1stg/prettier-config"
+  "dependenciesMeta": {
+    "@commitlint/config-conventional": {
+      "unplugged": true
+    },
+    "@commitlint/resolve-extends@19.0.1": {
+      "unplugged": true
+    },
+    "import-meta-resolve": {
+      "unplugged": true
+    }
+  }
 }

@@ -1,0 +1,14 @@
+diff --git a/node_modules/@isnotdefined/stylelint-plugin/package.json b/node_modules/@isnotdefined/stylelint-plugin/package.json
+index 3551464..ea2e9f3 100644
+--- a/node_modules/@isnotdefined/stylelint-plugin/package.json
++++ b/node_modules/@isnotdefined/stylelint-plugin/package.json
+@@ -62,7 +62,7 @@
+ 	},
+ 	"exports":
+ 	{
+-		"require": "index.cjs",
+-		"import": "index.js"
++		"require": "./index.cjs",
++		"import": "./index.js"
+ 	}
+ }

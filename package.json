@@ -7,24 +7,11 @@
   "private": true,
   "packageManager": "yarn@4.1.0",
   "scripts": {
-    "prepare": "simple-git-hooks"
+    "prepare": "patch-package"
   },
   "devDependencies": {
-    "@1stg/common-config": "^10.0.0",
-    "@commitlint/cli": "^18.6.1",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
-    "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.3.3"
-  },
-  "resolutions": {
-    "prettier": "^3.2.5"
-  },
-  "commitlint": {
-    "extends": "@1stg/commitlint-config"
-  },
-  "eslintConfig": {
-    "extends": "@1stg"
-  },
-  "prettier": "@1stg/prettier-config"
+    "@isnotdefined/stylelint-plugin": "4.0.0-fix.1",
+    "@unts/patch-package": "^8.0.0",
+    "import-meta-resolve": "^4.0.0"
+  }
 }

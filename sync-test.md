@@ -1,3 +1,3 @@
 # sync-test
 
-just some update
+just some update from GitHub

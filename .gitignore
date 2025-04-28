@@ -1,5 +1,7 @@
+.idea
 .yarn/*
 !.yarn/plugins
+!.yarn/releases
 node_modules
 *.iml
 *.log

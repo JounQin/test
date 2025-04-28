@@ -1,30 +1,32 @@
 {
   "name": "local-test",
   "version": "0.0.0",
-  "repository": "git@github.com:JounQin/test.git",
+  "type": "module",
+  "repository": "git+https://github.com/JounQin/test.git",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "private": true,
-  "packageManager": "yarn@4.1.0",
+  "packageManager": "yarn@4.9.1",
   "scripts": {
-    "prepare": "simple-git-hooks"
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "prepare": "simple-git-hooks && yarn-berry-deduplicate || exit 0"
   },
   "devDependencies": {
-    "@1stg/common-config": "^10.0.0",
-    "@commitlint/cli": "^18.6.1",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
-    "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.3.3"
+    "@1stg/common-config": "^13.0.1",
+    "@commitlint/cli": "^19.8.0",
+    "eslint": "^9.25.1",
+    "nano-staged": "^0.8.0",
+    "prettier": "^3.5.3",
+    "simple-git-hooks": "^2.13.0",
+    "typescript": "^5.8.3",
+    "yarn-berry-deduplicate": "^6.1.3"
   },
   "resolutions": {
-    "prettier": "^3.2.5"
+    "prettier": "^3.5.3"
   },
   "commitlint": {
     "extends": "@1stg/commitlint-config"
-  },
-  "eslintConfig": {
-    "extends": "@1stg"
   },
   "prettier": "@1stg/prettier-config"
 }

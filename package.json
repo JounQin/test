@@ -16,6 +16,8 @@
     "@1stg/common-config": "^14.0.0",
     "@commitlint/cli": "^19.8.1",
     "eslint": "^9.27.0",
+    "hast-util-raw": "^9.1.0",
+    "hastscript": "^9.0.1",
     "nano-staged": "^0.8.0",
     "prettier": "^3.5.3",
     "simple-git-hooks": "^2.13.0",
